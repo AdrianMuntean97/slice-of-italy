@@ -4,15 +4,30 @@
 {% block content %}
     <!-- Header with background image -->
     <header class="header-container">
-        <div class="header-content">
-            <div class="container text-overlay text-left">
-                <h1 class="display-3">Welcome to Slice of Italy</h1>
-                <p class="lead">Savor the true Italian flavor delivered right to your door.</p>
-                <hr class="my-4">
-                <p>Choose from our diverse selection of classic and gourmet pizzas, freshly made just for you.</p>
-            </div>
+        <div class="container text-overlay text-left">
+            <h1 class="display-3">Welcome to Slice of Italy</h1>
+            <p class="lead">Savor the true Italian flavor delivered right to your door.</p>
+            <hr class="my-4">
+            <p>Choose from our diverse selection of classic and gourmet pizzas, freshly made just for you.</p>
         </div>
     </header>
+
+    <!-- Image section -->
+    <section class="image-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <img src="{% static '/media/image1.jpg' %}" class="img-fluid" alt="Image 1">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <img src="{% static '/media/image2.jpg' %}" class="img-fluid" alt="Image 2">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <img src="{% static '/media/image3.jpg' %}" class="img-fluid" alt="Image 3">
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Example section showing some featured pizzas -->
     <section class="featured-pizzas">

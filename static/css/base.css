@@ -62,29 +62,65 @@ footer {
   color: white; /* Specify text color for footer */
   text-align: center;
   padding: 10px 0;
-  width: 50%; /* Ensure footer takes only the left half */
+  width: 100%; /* Take the entire width of the viewport */
   position: absolute;
   bottom: 0;
-  left: 0; /* Align footer to the left */
 }
 
-.about-us ul {
-  list-style-type: none; /* Removes the bullet points */
+.footer-content {
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Distribute content evenly */
+  align-items: center; /* Center items vertically */
+  width: 80%; /* Take 80% of the footer width */
+  margin: auto; /* Center horizontally */
+}
+
+.footer-text {
+  width: 30%; /* Take 30% of the footer width */
+  text-align: left; /* Align text to the left */
+  font-size: 14px; /* Set font size to 14px */
+}
+
+.location {
+  width: 30%; /* Take 30% of the footer width */
+  text-align: center; /* Center text */
+  font-size: 14px; /* Set font size to 14px */
+}
+
+.opening-hours {
+  width: 30%; /* Take 30% of the footer width */
+  text-align: right; /* Align text to the right */
+  font-size: 14px; /* Set font size to 14px */
+}
+
+.opening-hours ul {
   padding: 0; /* Removes default padding */
   margin: 0; /* Removes default margin */
 }
 
-.about-us ul li {
-  margin-bottom: 5px; /* Optional: Add some spacing between list items */
+.opening-hours ul li {
+  margin-bottom: 3px; /* Adjust margin as needed */
+  font-size: 14px; /* Set font size to 14px */
+  list-style-type: none; /* Removes the bullet points */
 }
 
+.image-section {
+  padding: 50px 0; /* Add padding for spacing */
+  width: 30%; /* Take 30% of the view */
+  margin: 0 auto; /* Center the content horizontally */
+}
+
+.image-section img {
+  width: 100%;
+  height: auto;
+}
+
+.featured-pizzas {
+  padding: 50px 0; /* Add padding for spacing */
+  width: 30%; /* Take 30% of the view */
+  margin: 0 auto; /* Center the content horizontally */
+}
 
 .header-container {
   position: relative;
-}
-
-.header-image {
-  width: 100%;
-  height: auto;
-  z-index: 0; /* Ensure the image is behind the overlay and text */
 }
