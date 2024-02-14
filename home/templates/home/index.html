@@ -2,12 +2,17 @@
 {% load static %}
 
 {% block content %}
-    <div class="container text-center my-5">
-        <h1 class="display-3">Welcome to Slice of Italy</h1>
-        <p class="lead">Savor the true Italian flavor delivered right to your door.</p>
-        <hr class="my-4">
-        <p>Choose from our diverse selection of classic and gourmet pizzas, freshly made just for you.</p>       
-    </div>
+    <!-- Header with background image -->
+    <header class="header-container">
+        <div class="header-content">
+            <div class="container text-overlay text-left">
+                <h1 class="display-3">Welcome to Slice of Italy</h1>
+                <p class="lead">Savor the true Italian flavor delivered right to your door.</p>
+                <hr class="my-4">
+                <p>Choose from our diverse selection of classic and gourmet pizzas, freshly made just for you.</p>
+            </div>
+        </div>
+    </header>
 
     <!-- Example section showing some featured pizzas -->
     <section class="featured-pizzas">
@@ -18,7 +23,7 @@
                 {% for pizza in featured_pizzas %}
                 <div class="col-md-4 mb-3">
                     <div class="card h-100">
-                        <img src="{{ pizza.image_url }}" class="card-img-top" alt="{{ pizza.name }}">
+                        <img src="{{ pizza.featured_image.url }}" class="card-img-top" alt="{{ pizza.name }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ pizza.name }}</h5>
                             <p class="card-text">{{ pizza.description }}</p>
