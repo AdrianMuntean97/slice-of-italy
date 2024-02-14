@@ -4,8 +4,17 @@
 {% block content %}
   <div class="container">
     <h2>Our Pizzas</h2>
-    <!-- Here you will loop through the pizzas and display them -->
-    <!-- For now, we'll just display a placeholder message -->
-    <p>Coming soon: Delicious pizzas!</p>
+    <div class="row">
+        <div class="col-md-4 mb-3">
+          <div class="card h-100">
+            <img src="{{ pizza.image.url }}" class="card-img-top" alt="{{ pizza.name }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ pizza.name }}</h5>
+              <p class="card-text">Price: {{ pizza.price }}</p>
+              <p class="card-text">Rating: {{ pizza.rating }}</p>
+            </div>
+          </div>
+        </div>
+    </div>
   </div>
 {% endblock %}
