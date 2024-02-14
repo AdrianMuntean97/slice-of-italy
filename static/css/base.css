@@ -61,7 +61,7 @@ header {
 
 .navbar-light .navbar-brand,
 .navbar-light .navbar-nav .nav-link {
-  color: var(--primary-color);
+  color: rgba(0,0,0,.9);
 }
 
 .navbar-light .navbar-nav .nav-link:hover,
