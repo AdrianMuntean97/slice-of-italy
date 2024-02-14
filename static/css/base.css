@@ -68,9 +68,16 @@ footer {
   left: 0; /* Align footer to the left */
 }
 
-.footer-content {
-  /* Add styles for footer content if needed */
+.about-us ul {
+  list-style-type: none; /* Removes the bullet points */
+  padding: 0; /* Removes default padding */
+  margin: 0; /* Removes default margin */
 }
+
+.about-us ul li {
+  margin-bottom: 5px; /* Optional: Add some spacing between list items */
+}
+
 
 .header-container {
   position: relative;
