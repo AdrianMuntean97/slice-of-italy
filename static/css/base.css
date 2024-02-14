@@ -33,7 +33,7 @@ body, html {
   color: #333; /* Charcoal color for text */
   z-index: 2; /* Ensure the text is on top of the overlay */
   width: 40%; /* Set the width to occupy one-third of the header's width */
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5); /* Add text shadow for shine effect */
 }
 
 .text-overlay h1 {
@@ -57,14 +57,19 @@ header {
   overflow: hidden;
 }
 
-.footer {
-  background: #333;
-  color: white;
+footer {
+  background: #333; /* Specify background color for footer */
+  color: white; /* Specify text color for footer */
   text-align: center;
   padding: 10px 0;
+  width: 50%; /* Ensure footer takes only the left half */
   position: absolute;
   bottom: 0;
-  width: 100%;
+  left: 0; /* Align footer to the left */
+}
+
+.footer-content {
+  /* Add styles for footer content if needed */
 }
 
 .header-container {
