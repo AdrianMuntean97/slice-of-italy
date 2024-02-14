@@ -2,19 +2,25 @@
 {% load static %}
 
 {% block content %}
-  <div class="container">
+<div class="container">
     <h2>Our Pizzas</h2>
     <div class="row">
-        <div class="col-md-4 mb-3">
-          <div class="card h-100">
-            <img src="{{ pizza.image.url }}" class="card-img-top" alt="{{ pizza.name }}">
-            <div class="card-body">
-              <h5 class="card-title">{{ pizza.name }}</h5>
-              <p class="card-text">Price: {{ pizza.price }}</p>
-              <p class="card-text">Rating: {{ pizza.rating }}</p>
+        {% for pizza in pizzas %}
+        <div class="col-md-6 mb-3"> 
+            <div class="card h-100">
+                <img src="{{ pizza.image.url }}" class="card-img-top" alt="{{ pizza.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ pizza.name }}</h5>
+                    <p class="card-text">Price: ${{ pizza.price }}</p>
+                    <p class="card-text">Rating: {{ pizza.rating }}</p>
+                </div>
             </div>
-          </div>
         </div>
+        {% if forloop.counter|divisibleby:2 %} 
     </div>
-  </div>
+    <div class="row">
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
