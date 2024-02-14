@@ -1,0 +1,48 @@
+/* base.css */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  header {
+    background: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: left;
+  }
+  
+  main {
+    padding: 15px;
+    background-color: #f4f4f4;
+  }
+  
+  h1 {
+    color: #333;
+  }
+  
+  .container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+  }
+  
+  .footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  /* Add responsive design at 768px screen width */
+  @media screen and (max-width: 768px) {
+    .container {
+      width: 95%;
+    }
+  }
+  
