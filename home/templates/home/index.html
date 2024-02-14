@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container text-center my-5">
+        <h1 class="display-3">Welcome to Slice of Italy</h1>
+        <p class="lead">Savor the true Italian flavor delivered right to your door.</p>
+        <hr class="my-4">
+        <p>Choose from our diverse selection of classic and gourmet pizzas, freshly made just for you.</p>       
+    </div>
+
+    <!-- Example section showing some featured pizzas -->
+    <section class="featured-pizzas">
+        <div class="container">
+            <h2 class="text-center mb-4">Featured Pizzas</h2>
+            <div class="row">
+                <!-- Placeholder for pizza items -->
+                {% for pizza in featured_pizzas %}
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <img src="{{ pizza.image_url }}" class="card-img-top" alt="{{ pizza.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ pizza.name }}</h5>
+                            <p class="card-text">{{ pizza.description }}</p>
+                            <a href="{% url 'pizzas:detail' pizza.id %}" class="btn btn-outline-primary">View</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
