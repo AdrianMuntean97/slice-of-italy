@@ -23,5 +23,8 @@
     {% empty %}
     <p>Your bag is empty.</p>
     {% endfor %}
+    <div>
+        <h3>Grand Total: ${{ bag.grand_total }}</h3>
+    </div>
 </div>
 {% endblock %}
