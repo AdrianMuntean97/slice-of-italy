@@ -26,6 +26,7 @@ urlpatterns = [
     path('', include('home.urls')),
     path('pizzas/', include('pizzas.urls')),
     path('profile/', include('profiles.urls')),
+    path('bag/', include('bag.urls')),
     
     # Add the logout URL pattern
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),

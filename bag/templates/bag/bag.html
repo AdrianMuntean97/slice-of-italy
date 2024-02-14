@@ -5,14 +5,16 @@
     <h2>Your Bag</h2>
     {% for item in bag_items %}
     <div>
+        <img src="{{ item.pizza.image.url }}" alt="{{ item.pizza.name }}" style="width: 100px; height: 100px;">
         <span>{{ item.pizza.name }}</span>
-        <span>{{ item.quantity }}</span>
-        <span>{{ item.quantity * item.pizza.price }}</span>
+        <span>${{ item.pizza.price }}</span>
+        <span>Quantity: </span>
         <form method="post" action="{% url 'adjust_bag' item.id %}">
             {% csrf_token %}
             <input type="number" name="quantity" value="{{ item.quantity }}" min="0">
             <input type="submit" value="Update">
         </form>
+        <span>Subtotal: ${{ item.subtotal }}</span>
         <form method="post" action="{% url 'remove_from_bag' item.id %}">
             {% csrf_token %}
             <input type="submit" value="Remove">

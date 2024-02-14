@@ -35,6 +35,9 @@
             <a class="nav-link" href="{% url 'pizzas' %}">Menu</a>
           </li>
           <!-- Add other navigation items here -->
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'bag' %}">Bag</a>
+          </li>
         </ul>
         <ul class="navbar-nav">
           {% if user.is_authenticated %}
@@ -54,7 +57,6 @@
           {% endif %}
         </ul>
       </div>
-      
     </nav>
   </header>
 

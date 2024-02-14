@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['8000-adrianmunte-sliceofital-dh0ps3el2pq.ws-eu108.gitpod.io']
 
-CSRF_TRUSTED_ORIGINS= []
+CSRF_TRUSTED_ORIGINS= ['https://8000-adrianmunte-sliceofital-dh0ps3el2pq.ws-eu108.gitpod.io']
 
 # Application definition
 
