@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from .models import Pizza  # Import the Pizza model if it exists in your models.py
+from django.shortcuts import render, get_object_or_404
+from .models import Pizza
+
 
 def all_pizzas(request):
     """ A view to show all pizzas, including sorting and search queries """
@@ -12,3 +13,15 @@ def all_pizzas(request):
     }
 
     return render(request, 'pizzas/pizzas.html', context)
+
+
+def pizzas_detail(request, pizza_id):
+    """ A view to show individual pizza details """
+
+    pizza = get_object_or_404(Pizza, pk=pizza_id)
+
+    context = {
+        'pizza': pizza,
+    }
+
+    return render(request, 'pizzas/pizzas_detail.html', context)

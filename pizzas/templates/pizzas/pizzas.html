@@ -8,7 +8,9 @@
         {% for pizza in pizzas %}
         <div class="col-md-6 mb-3"> 
             <div class="card h-100">
-                <img src="{{ pizza.image.url }}" class="card-img-top" alt="{{ pizza.name }}">
+                <a href="{% url 'pizza_detail' pizza.id %}">
+                    <img src="{{ pizza.image.url }}" class="card-img-top" alt="{{ pizza.name }}">
+                </a>
                 <div class="card-body">
                     <h5 class="card-title">{{ pizza.name }}</h5>
                     <p class="card-text">Price: ${{ pizza.price }}</p>

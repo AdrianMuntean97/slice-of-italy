@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mb-3"> 
+            <div class="card h-100">
+                <img src="{{ pizza.image.url }}" class="card-img-top" alt="{{ pizza.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ pizza.name }}</h5>
+                    <p class="card-text">Price: ${{ pizza.price }}</p>
+                    <p class="card-text">Rating: {{ pizza.rating }}</p>
+                    <p class="card-text">{{ pizza.description }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
