@@ -1,1 +1,1 @@
-web: gunicorn slice-of-italy.wsgi:application
+web: gunicorn slice_of_italy.wsgi:application
