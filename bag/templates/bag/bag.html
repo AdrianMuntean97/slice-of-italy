@@ -26,5 +26,8 @@
     <div>
         <h3>Grand Total: ${{ bag.grand_total }}</h3>
     </div>
+    <form action="{% url 'checkout' %}" method="get">
+        <button type="submit" class="btn btn-primary">Go to Checkout</button>
+    </form>
 </div>
 {% endblock %}

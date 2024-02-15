@@ -49,7 +49,9 @@ INSTALLED_APPS = [
     'profiles',
     'pizzas',
     'crispy_forms',
-    'crispy_bootstrap4'
+    'crispy_bootstrap4',
+    'stripe',
+    'django_countries',
 ]
 
 MIDDLEWARE = [
@@ -160,3 +162,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGOUT_REDIRECT_URL = 'home'
+
+# Stripe
+STRIPE_CURRENCY = 'usd'
+STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY') 
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')

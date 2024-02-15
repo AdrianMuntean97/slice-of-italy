@@ -1,3 +1,4 @@
+from django.views.decorators.http import require_POST
 from django.shortcuts import redirect, get_object_or_404, render
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -77,3 +78,7 @@ def remove_from_bag(request, item_id):
     bag_item.delete()
     messages.info(request, 'Item removed from bag.')
     return redirect('bag')
+
+@login_required
+def checkout(request):
+    return render(request, 'checkout/checkout.html')
