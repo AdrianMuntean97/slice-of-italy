@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+from custom_storages import StaticStorage, MediaStorage
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,9 +29,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['https://slice-of-italy-de6ddafff4aa.herokuapp.com/','slice-of-italy-de6ddafff4aa.herokuapp.com','localhost']
-
-CSRF_TRUSTED_ORIGINS= ['https://slice-of-italy-de6ddafff4aa.herokuapp.com/','https://slice-of-italy-de6ddafff4aa.herokuapp.com','localhost']
+ALLOWED_HOSTS = ['slice-of-italy-de6ddafff4aa.herokuapp.com', 'localhost']
+CSRF_TRUSTED_ORIGINS = ['https://slice-of-italy-de6ddafff4aa.herokuapp.com', 'http://localhost']
 
 # Application definition
 
