@@ -27,9 +27,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-b9@(%(gvx&gx7$yus2!fw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://slice-of-italy-de6ddafff4aa.herokuapp.com/']
+ALLOWED_HOSTS = ['https://slice-of-italy-de6ddafff4aa.herokuapp.com/','slice-of-italy-de6ddafff4aa.herokuapp.com','localhost']
 
-CSRF_TRUSTED_ORIGINS= ['https://slice-of-italy-de6ddafff4aa.herokuapp.com/']
+CSRF_TRUSTED_ORIGINS= ['https://slice-of-italy-de6ddafff4aa.herokuapp.com/','https://slice-of-italy-de6ddafff4aa.herokuapp.com','localhost']
 
 # Application definition
 
