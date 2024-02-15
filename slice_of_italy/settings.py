@@ -27,9 +27,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-b9@(%(gvx&gx7$yus2!fw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-adrianmunte-sliceofital-dh0ps3el2pq.ws-eu108.gitpod.io']
+ALLOWED_HOSTS = ['https://slice-of-italy-de6ddafff4aa.herokuapp.com/']
 
-CSRF_TRUSTED_ORIGINS= ['https://8000-adrianmunte-sliceofital-dh0ps3el2pq.ws-eu108.gitpod.io']
+CSRF_TRUSTED_ORIGINS= ['https://slice-of-italy-de6ddafff4aa.herokuapp.com/']
 
 # Application definition
 
@@ -148,8 +148,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
+DEBUG = True
+
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
