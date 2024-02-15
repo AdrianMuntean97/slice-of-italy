@@ -1,27 +1,19 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.contrib.auth.decorators import login_required
-from .models import Order, OrderItem
-from django.conf import settings
-from bag.models import Bag
-from .forms import OrderForm
-from django.contrib import messages
+from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.views.decorators.http import require_POST
+from django.contrib import messages
+from django.conf import settings
 
+from .forms import OrderForm
+from .models import Order, OrderLineItem
+
+from pizzas.models import Pizza
+from profiles.models import UserProfile
+from profiles.forms import UserProfileForm
+from bag.contexts import bag_contents
 
 import stripe
 import json
 
-
-stripe.api_key = settings.STRIPE_SECRET_KEY
-
-
-def calculate_cart_total(user):
-    try:
-        bag = Bag.objects.get(user=user)
-        total = sum(item.get_total_item_price() for item in bag.items.all())
-        return total
-    except Bag.DoesNotExist:
-        return 0
 
 @require_POST
 def cache_checkout_data(request):
@@ -38,6 +30,7 @@ def cache_checkout_data(request):
         messages.error(request, 'Sorry, your payment cannot be \
             processed right now. Please try again later.')
         return HttpResponse(content=e, status=400)
+
 
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
@@ -101,7 +94,7 @@ def checkout(request):
         bag = request.session.get('bag', {})
         if not bag:
             messages.error(request, "There's nothing in your bag at the moment")
-            return redirect(reverse('pizzas'))
+            return redirect(reverse('products'))
 
         current_bag = bag_contents(request)
         total = current_bag['grand_total']
@@ -187,29 +180,3 @@ def checkout_success(request, order_number):
     }
 
     return render(request, template, context)
-
-@login_required
-def process_checkout(request):
-    if request.method == 'POST':
-        payment_form = PaymentForm(request.POST)
-        if payment_form.is_valid():
-            cart_total = calculate_cart_total(request.user) * 100
-            try:
-                charge = stripe.Charge.create(
-                    amount=cart_total,
-                    currency='usd',
-                    description='Charge for {}'.format(request.user.username),
-                    source=payment_form.cleaned_data['stripe_token']
-                )
-                with transaction.atomic():
-                    order = Order.objects.create(
-                        user=request.user,
-                        total_paid=charge.amount / 100  
-                    )
-
-                return redirect('order_confirmation', order_id=order.id)
-            except stripe.error.StripeError as e:
-                print(e)
-                return redirect('checkout')
-    return redirect('checkout')
-
