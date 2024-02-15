@@ -7,8 +7,7 @@ class OrderForm(forms.ModelForm):
         model = Order
         fields = ('full_name', 'email', 'phone_number',
                   'street_address1', 'street_address2',
-                  'town_or_city', 'postcode', 'country',
-                  'county',)
+                  'town_or_city', 'postcode', 'county',)  # Removed 'country' from fields
 
     def __init__(self, *args, **kwargs):
         """
@@ -29,7 +28,7 @@ class OrderForm(forms.ModelForm):
 
         self.fields['full_name'].widget.attrs['autofocus'] = True
         for field in self.fields:
-            if field != 'country':
+            if field != 'country':  # Remove 'country' from the loop
                 if self.fields[field].required:
                     placeholder = f'{placeholders[field]} *'
                 else:
