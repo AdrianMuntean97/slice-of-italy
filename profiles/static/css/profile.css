@@ -1,55 +1,21 @@
-/* profile.css */
-
-/* General body styling */
-body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    background: #f4f4f4;
-    margin: 0;
-    padding: 0;
+.order-history {
+    max-height: 416px; /* height of profile form + submit button */
+    overflow-y: auto;
 }
 
-/* Container for the profile */
-.container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
+#profile-update-form .form-control {
+    color: #000;
 }
 
-/* Card styling for profile information */
-.card {
-    background: #fff;
-    padding: 20px;
-    margin-top: 20px;
+#profile-update-form input::placeholder {
+    color: #aab7c4;
 }
 
-/* Card header */
-.card-header {
-    background: #333;
-    color: #fff;
-    padding: 10px;
-    margin-bottom: 15px;
+#id_default_country,
+#id_default_country option:not(:first-child) {
+    color: #000;
 }
 
-
-/* Button styling */
-button {
-    display: block;
-    cursor: pointer;
-    background: #5cb85c;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin-top: 10px;
-}
-
-/* Button hover effect */
-button:hover {
-    background: #4cae4c;
-}
-
-/* Error message styling */
-.error {
-    color: red;
-    margin: 10px 0;
+#id_default_country option:first-child {
+    color: #aab7c4;
 }
