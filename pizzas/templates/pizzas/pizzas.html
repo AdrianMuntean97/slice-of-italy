@@ -15,16 +15,16 @@
         <div class="row">
             <div class="col text-center mt-3">
                 <h2 class="logo-font">Pizza Menu</h2>
-                {% for c in current_categories %}
-                    <a class="category-badge text-decoration-none" href="{% url 'pizzas' %}?category={{ c.name }}">
-                        <span class="p-2 mt-2 badge badge-white text-black rounded-0 border border-dark">{{ c.friendly_name }}</span>
+                {% for category in current_categories %}
+                    <a class="category-badge text-decoration-none" href="{% url 'pizzas' %}?category={{ category.name }}">
+                        <span class="p-2 mt-2 badge badge-white text-black rounded-0 border border-dark">{{ category.friendly_name }}</span>
                     </a>
                 {% endfor %}
                 <hr class="w-50 mb-1">
             </div>
         </div>
         <div class="row">
-            <div class="product-container col-10 offset-1">
+            <div class="pizza-container col-10 offset-1">
                 <div class="row mt-1 mb-2">
                     <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
                         <div class="sort-select-wrapper w-50">
@@ -46,46 +46,40 @@
                             {% if search_term or current_categories or current_sorting != 'None_None' %}
                                 <span class="small"><a href="{% url 'pizzas' %}">Pizza Menu</a> | </span>
                             {% endif %}
-                            {{ products|length }} Pizzas{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
+                            {{ pizzas|length }} Pizzas{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
                         </p>
                     </div>
                 </div>
                 <div class="row">
-                    {% for product in products %}
+                    {% for pizza in pizzas %}
                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                             <div class="card h-100 border-0">
-                                {% if product.image %}
-                                <a href="{% url 'pizza_detail' product.id %}">
-                                    <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                <a href="{% url 'pizza_detail' pizza.id %}">
+                                    <img class="card-img-top img-fluid" src="{{ pizza.image.url }}" alt="{{ pizza.name }}">
                                 </a>
-                                {% else %}
-                                <a href="{% url 'pizza_detail' product.id %}">
-                                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
-                                </a>
-                                {% endif %}
                                 <div class="card-body pb-0">
-                                    <p class="mb-0">{{ product.name }}</p>
+                                    <p class="mb-0">{{ pizza.name }}</p>
                                 </div>
                                 <div class="card-footer bg-white pt-0 border-0 text-left">
                                     <div class="row">
                                         <div class="col">
-                                            <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
-                                            {% if product.category %}
+                                            <p class="lead mb-0 text-left font-weight-bold">${{ pizza.price }}</p>
+                                            {% if pizza.category %}
                                             <p class="small mt-1 mb-0">
-                                                <a class="text-muted" href="{% url 'pizzas' %}?category={{ product.category.name }}">
-                                                    <i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}
+                                                <a class="text-muted" href="{% url 'pizzas' %}?category={{ pizza.category.name }}">
+                                                    <i class="fas fa-tag mr-1"></i>{{ pizza.category.friendly_name }}
                                                 </a>
                                             </p>
                                             {% endif %}
-                                            {% if product.rating %}
-                                                <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
+                                            {% if pizza.rating %}
+                                                <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ pizza.rating }} / 5</small>
                                             {% else %}
                                                 <small class="text-muted">No Rating</small>
                                             {% endif %}
                                             {% if request.user.is_superuser %}
                                                 <small class="ml-3">
-                                                    <a href="{% url 'edit_pizza' product.id %}">Edit</a> | 
-                                                    <a class="text-danger" href="{% url 'delete_pizza' product.id %}">Delete</a>
+                                                    <a href="{% url 'edit_pizza' pizza.id %}">Edit</a> | 
+                                                    <a class="text-danger" href="{% url 'delete_pizza' pizza.id %}">Delete</a>
                                                 </small>
                                             {% endif %}
                                         </div>

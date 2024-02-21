@@ -5,7 +5,7 @@ from django.db.models import Q
 from .models import Pizza, Category
 from .forms import PizzaForm
 
-def all_pizzas(request):
+def pizzas(request):
     """ A view to show all pizzas, including sorting and search queries """
     pizzas = Pizza.objects.all()
     query = request.GET.get('q')
@@ -83,4 +83,4 @@ def delete_pizza(request, pizza_id):
     pizza = get_object_or_404(Pizza, pk=pizza_id)
     pizza.delete()
     messages.success(request, 'Pizza deleted!')
-    return redirect(reverse('all_pizzas'))
+    return redirect(reverse('pizzas'))

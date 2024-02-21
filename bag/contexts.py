@@ -9,13 +9,13 @@ def bag_contents(request):
     pizza_count = 0
     bag = request.session.get('bag', {})
 
-    for item_id, item_quantity in bag.items():
-        pizza = get_object_or_404(Pizza, pk=item_id)
-        total += item_quantity * pizza.price
-        pizza_count += item_quantity
+    for pizza_id, pizza_quantity in bag.items():
+        pizza = get_object_or_404(Pizza, pk=pizza_id)
+        total += pizza_quantity * pizza.price
+        pizza_count += pizza_quantity
         bag_items.append({
-            'item_id': item_id,
-            'quantity': item_quantity,
+            'pizza_id': pizza_id,
+            'quantity': pizza_quantity,
             'pizza': pizza,
         })
 

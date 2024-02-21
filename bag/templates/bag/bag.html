@@ -23,7 +23,7 @@
 
         <div class="row">
             <div class="col">
-                {% if bag_items %}
+                {% if bag_pizzas %}
                     <div class="d-block d-md-none">
                         <div class="row">
                             <div class="col">
@@ -36,7 +36,7 @@
                                 <p class="text-muted mb-5">A summary of your bag contents is below</p>
                             </div>
                         </div>
-                        {% for item in bag_items %}
+                        {% for item in bag_pizzas %}
                             <div class="row">
                                 <div class="col-12 col-sm-6 mb-2">
                                     {% include "bag/pizza-image.html" %}
@@ -72,7 +72,7 @@
                                 </tr>
                             </thead>
 
-                            {% for item in bag_items %}
+                            {% for item in bag_pizzas %}
                                 <tr>
                                     <td class="p-3 w-25">
                                         {% include "bag/pizza-image.html" %}
@@ -125,25 +125,4 @@
     })
 </script>
 {% include 'pizzas/includes/quantity_input_script.html' %}
-
-<script type="text/javascript">
-    // Update quantity on click
-    $('.update-link').click(function(e) {
-        var form = $(this).prev('.update-form');
-        form.submit();
-    })
-
-    // Remove item and reload on click
-    $('.remove-item').click(function(e) {
-        var csrfToken = "{{ csrf_token }}";
-        var itemId = $(this).attr('id').split('remove_')[1];
-        var url = `/bag/remove/${itemId}/`;
-        var data = {'csrfmiddlewaretoken': csrfToken};
-
-        $.post(url, data)
-         .done(function() {
-             location.reload();
-         });
-    })
-</script>
 {% endblock %}

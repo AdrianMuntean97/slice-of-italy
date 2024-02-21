@@ -1,62 +1,65 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
 from django.contrib import messages
-
 from pizzas.models import Pizza
 
 def view_bag(request):
-    """ A view that renders the bag contents page """
-    return render(request, 'bag/bag.html')
+    """A view that renders the bag contents page"""
+    bag_pizzas = request.session.get('bag', {})
+    pizzas_in_bag = []
+    for pizza_id, quantity in bag_pizzas.items():
+        pizza = get_object_or_404(Pizza, pk=pizza_id)
+        pizzas_in_bag.append({'pizza': pizza, 'quantity': quantity})
+    return render(request, 'bag/bag.html', {'bag_pizzas': pizzas_in_bag})
 
-def add_to_bag(request, item_id):
-    """ Add a quantity of the specified pizza to the shopping bag """
-
-    pizza = get_object_or_404(Pizza, pk=item_id)
+def add_to_bag(request, pizza_id):
+    """Add a quantity of the specified pizza to the shopping bag"""
+    pizza = get_object_or_404(Pizza, pk=pizza_id)
     quantity = int(request.POST.get('quantity'))
-    redirect_url = request.POST.get('redirect_url')
     bag = request.session.get('bag', {})
 
-    if item_id in list(bag.keys()):
-        bag[item_id] += quantity
-        messages.success(request, f'Updated {pizza.name} quantity to {bag[item_id]}')
+    if pizza_id in bag:
+        bag[pizza_id] += quantity
+        messages.success(request, f'Updated {pizza.name} quantity to {bag[pizza_id]}')
     else:
-        bag[item_id] = quantity
+        bag[pizza_id] = quantity
         messages.success(request, f'Added {pizza.name} to your bag')
-
-    request.session['bag'] = bag
-    return redirect(redirect_url)
-    
-
-def adjust_bag(request, item_id):
-    """Adjust the quantity of the specified pizza to the specified amount"""
-
-    pizza = get_object_or_404(Pizza, pk=item_id)
-    quantity = int(request.POST.get('quantity'))
-    bag = request.session.get('bag', {})
-
-    if quantity > 0:
-        bag[item_id] = quantity
-        messages.success(request, f'Updated {pizza.name} quantity to {bag[item_id]}')
-    else:
-        bag.pop(item_id)
-        messages.success(request, f'Removed {pizza.name} from your bag')
 
     request.session['bag'] = bag
     return redirect(reverse('view_bag'))
 
-
-def remove_from_bag(request, item_id):
-    """Remove the item from the shopping bag"""
-
+def adjust_bag(request, pizza_id):
+    """Adjust the quantity of the specified pizza to the specified amount"""
     try:
-        pizza = get_object_or_404(Pizza, pk=item_id)
+        pizza = get_object_or_404(Pizza, pk=pizza_id)
+        quantity = int(request.POST.get('quantity', 0))
+        if quantity < 0:
+            raise ValueError("Quantity must be a non-negative integer")
+
+        bag = request.session.get('bag', {})
+        if quantity > 0:
+            bag[pizza_id] = quantity
+            messages.success(request, f'Updated {pizza.name} quantity to {quantity}')
+        else:
+            bag.pop(pizza_id, None)   
+            messages.success(request, f'Removed {pizza.name} from your bag')
+
+        request.session['bag'] = bag
+    except ValueError as e:
+        messages.error(request, str(e))
+
+    return redirect(reverse('view_bag'))
+
+def remove_from_bag(request, pizza_id):
+    """Remove the pizza from the shopping bag"""
+    try:
+        pizza = get_object_or_404(Pizza, pk=pizza_id)
         bag = request.session.get('bag', {})
 
-        bag.pop(item_id)
+        bag.pop(pizza_id)
         messages.success(request, f'Removed {pizza.name} from your bag')
 
         request.session['bag'] = bag
         return HttpResponse(status=200)
-
     except Exception as e:
-        messages.error(request, f'Error removing item: {e}')
+        messages.error(request, f'Error removing pizza: {e}')
         return HttpResponse(status=500)
