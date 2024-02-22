@@ -52,14 +52,14 @@ def adjust_bag(request, pizza_id):
 def remove_from_bag(request, pizza_id):
     """Remove the pizza from the shopping bag"""
     try:
-        pizza = get_object_or_404(Pizza, pk=pizza_id)
         bag = request.session.get('bag', {})
-
-        bag.pop(pizza_id)
+        pizza = get_object_or_404(Pizza, pk=pizza_id)
+        
+        bag.pop(str(pizza_id))  # Ensure pizza_id is a string if bag uses string keys
         messages.success(request, f'Removed {pizza.name} from your bag')
-
+        
         request.session['bag'] = bag
-        return HttpResponse(status=200)
+        return redirect('view_bag')  # Redirect to the bag view
     except Exception as e:
-        messages.error(request, f'Error removing pizza: {e}')
-        return HttpResponse(status=500)
+        messages.error(request, f'Error removing item: {e}')
+        return redirect('view_bag')  # Redirect to the bag view

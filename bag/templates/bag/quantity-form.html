@@ -9,7 +9,12 @@
         <button type="button" class="btn btn-sm btn-black rounded-0 increment-qty" data-pizza_id="{{ item.pizza.id }}">
             <i class="fas fa-plus fa-sm"></i>
         </button>
-        <button type="button" class="btn btn-danger btn-sm mt-2 remove-item" data-pizza_id="{{ item.pizza.id }}">
+    </div>
+</form>
+<form class="form update-form" method="POST" action="{% url 'remove_from_bag' item.pizza.id %}">
+    {% csrf_token %}
+    <div class="input-group">
+        <button type="submit" class="btn btn-danger btn-sm mt-2">
             Remove
         </button>
     </div>
