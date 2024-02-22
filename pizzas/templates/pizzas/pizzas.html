@@ -16,7 +16,7 @@
             <div class="col text-center mt-3">
                 <h2 class="logo-font">Pizza Menu</h2>
                 {% for category in all_categories %}
-                    <a href="{% url 'pizzas_by_category' category.name %}" class="dropdown-item">{{ category.name }}</a>
+                    <a href="{% url 'pizzas_by_category' category.name %}" class="dropdown-item">{{ category.friendly_name }}</a>
                 {% endfor %}
                 <hr class="w-50 mb-1">
             </div>
