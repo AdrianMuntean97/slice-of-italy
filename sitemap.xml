@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://slice-of-italy-de6ddafff4aa.herokuapp.com/</loc>
+  <lastmod>2024-02-22T19:52:45+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://slice-of-italy-de6ddafff4aa.herokuapp.com/accounts/signup/</loc>
+  <lastmod>2024-02-22T19:52:45+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://slice-of-italy-de6ddafff4aa.herokuapp.com/accounts/login/</loc>
+  <lastmod>2024-02-22T19:52:45+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://slice-of-italy-de6ddafff4aa.herokuapp.com/bag/</loc>
+  <lastmod>2024-02-22T19:52:45+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://slice-of-italy-de6ddafff4aa.herokuapp.com/pizzas/category/vegetarian/</loc>
+  <lastmod>2024-02-22T19:52:45+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://slice-of-italy-de6ddafff4aa.herokuapp.com/pizzas/category/meat-lover/</loc>
+  <lastmod>2024-02-22T19:52:45+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://slice-of-italy-de6ddafff4aa.herokuapp.com/pizzas/</loc>
+  <lastmod>2024-02-22T19:52:45+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://slice-of-italy-de6ddafff4aa.herokuapp.com/accounts/password/reset/</loc>
+  <lastmod>2024-02-22T19:52:45+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slice-of-italy-de6ddafff4aa.herokuapp.com/pizzas/1/</loc>
+  <lastmod>2024-02-22T19:52:45+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slice-of-italy-de6ddafff4aa.herokuapp.com/pizzas/?category=vegetarian</loc>
+  <lastmod>2024-02-22T19:52:45+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slice-of-italy-de6ddafff4aa.herokuapp.com/pizzas/2/</loc>
+  <lastmod>2024-02-22T19:52:45+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://slice-of-italy-de6ddafff4aa.herokuapp.com/pizzas/?category=meat-lover</loc>
+  <lastmod>2024-02-22T19:52:45+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>

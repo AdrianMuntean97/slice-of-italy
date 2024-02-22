@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /accounts/
+Sitemap: https://slice-of-italy-de6ddafff4aa.herokuapp.com/sitemap.xml
