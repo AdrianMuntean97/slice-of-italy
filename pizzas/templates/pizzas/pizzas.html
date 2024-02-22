@@ -15,11 +15,9 @@
         <div class="row">
             <div class="col text-center mt-3">
                 <h2 class="logo-font">Pizza Menu</h2>
-                {% if pizza.category %}
-                    <a class="text-muted" href="{% url 'pizzas_by_category' %}?category={{ pizza.category.name }}">
-                        <i class="fas fa-tag mr-1"></i>{{ pizza.category.friendly_name }}
-                    </a>
-                {% endif %}
+                {% for category in all_categories %}
+                    <a href="{% url 'pizzas_by_category' category.name %}" class="dropdown-item">{{ category.name }}</a>
+                {% endfor %}
                 <hr class="w-50 mb-1">
             </div>
         </div>

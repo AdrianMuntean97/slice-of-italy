@@ -10,6 +10,7 @@ def pizzas(request):
     pizzas = Pizza.objects.all()
     query = request.GET.get('q')
     categories = request.GET.getlist('category')
+    all_categories = Category.objects.all()
     sort = request.GET.get('sort')
     direction = request.GET.get('direction')
 
@@ -30,6 +31,7 @@ def pizzas(request):
         'pizzas': pizzas,
         'search_term': query,
         'current_categories': categories,
+        'all_categories': all_categories,
         'current_sorting': f'{sort}_{direction}',
     }
 
@@ -38,10 +40,12 @@ def pizzas(request):
 def pizzas_by_category(request, category):
     """ A view to show pizzas filtered by category """
     pizzas = Pizza.objects.filter(category__name=category)
+    all_categories = Category.objects.all()  # Make sure this is included
+
     context = {
         'pizzas': pizzas,
-        'current_categories': Category.objects.all(),  # Optional: Include all categories for navigation
-        'current_category': category,  # Optional: Pass the current category for display
+        'current_category': category,
+        'all_categories': all_categories,  # Pass all categories to the template
     }
     return render(request, 'pizzas/pizzas.html', context)
 
