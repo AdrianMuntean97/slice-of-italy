@@ -35,6 +35,17 @@ def pizzas(request):
 
     return render(request, 'pizzas/pizzas.html', context)
 
+def pizzas_by_category(request, category):
+    """ A view to show pizzas filtered by category """
+    pizzas = Pizza.objects.filter(category__name=category)
+    context = {
+        'pizzas': pizzas,
+        'current_categories': Category.objects.all(),  # Optional: Include all categories for navigation
+        'current_category': category,  # Optional: Pass the current category for display
+    }
+    return render(request, 'pizzas/pizzas.html', context)
+
+
 def pizza_detail(request, pizza_id):
     """ A view to show individual pizza details """
     pizza = get_object_or_404(Pizza, pk=pizza_id)
