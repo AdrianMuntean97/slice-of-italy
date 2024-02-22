@@ -263,6 +263,56 @@ color: #17a2b8; /* text-info */
   border-radius: 0;
 }
 
+footer.container-wrapper {
+  z-index: 1000;
+  background-color: white !important;
+}
+
+footer .quotes-container {
+  padding: 2rem;
+}
+
+footer h2, footer h3 {
+  font-size: 1.5rem;
+  color: #333; /* Or any color you prefer for the text */
+}
+
+footer a {
+  color: #007bff; /* Bootstrap default link color, or choose your own */
+}
+
+footer a:hover {
+  color: #0056b3; /* Darker shade for hover state */
+}
+
+footer .block-divider {
+  border-color: #eee; /* Light gray border for the divider */
+}
+
+/* Social Icons */
+footer .fab {
+  font-size: 1.5rem; /* Adjust size as needed */
+  margin-right: 0.5rem;
+}
+
+#mc_embed_signup {
+  background: #fff;
+  clear: left;
+  font: 14px Helvetica, Arial, sans-serif;
+  width: 600px;
+  margin: 0;
+}
+
+#mc_embed_signup form {
+  margin: 0;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+  footer .quotes-container {
+      padding: 1rem;
+  }
+}
 
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
