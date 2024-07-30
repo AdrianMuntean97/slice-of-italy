@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+
+{% block meta %}
+    <meta name="description" content="Add a review for {{ pizza.name }} at Slice of Italy. Share your thoughts and experiences with our delicious pizzas.">
+{% endblock %}
+
 {% block content %}
   <h1>Add Review for {{ pizza.name }}</h1>
   <form method="post">

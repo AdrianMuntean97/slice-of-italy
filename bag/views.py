@@ -55,11 +55,11 @@ def remove_from_bag(request, pizza_id):
         bag = request.session.get('bag', {})
         pizza = get_object_or_404(Pizza, pk=pizza_id)
         
-        bag.pop(str(pizza_id))  # Ensure pizza_id is a string if bag uses string keys
+        bag.pop(str(pizza_id))  
         messages.success(request, f'Removed {pizza.name} from your bag')
         
         request.session['bag'] = bag
-        return redirect('view_bag')  # Redirect to the bag view
+        return redirect('view_bag')
     except Exception as e:
         messages.error(request, f'Error removing item: {e}')
-        return redirect('view_bag')  # Redirect to the bag view
+        return redirect('view_bag')

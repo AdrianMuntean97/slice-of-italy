@@ -10,7 +10,6 @@ body {
   font-family: 'Lato';
 }
 
-/* from Bulma */
 .icon {
   align-items: center;
   display: inline-flex;
@@ -40,7 +39,7 @@ body {
 
 .btn-outline-black {
   background: white;
-  color: black !important; /* use important to override link colors for <a> elements */
+  color: black !important;
   border: 1px solid black;
 }
 
@@ -106,7 +105,6 @@ input[name='q']::placeholder {
   color: #aab7c4;
 }
 
-/* ------------------------------- bootstrap toasts */
 
 .message-container {
   position: fixed;
@@ -123,7 +121,6 @@ input[name='q']::placeholder {
   height: 2px;
 }
 
-/* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
 .arrow-up {
   width: 0; 
   height: 0; 
@@ -135,7 +132,6 @@ input[name='q']::placeholder {
   right: 36px;
 }
 
-/* Convenience classes - colors copied from Bootstrap */
 .arrow-primary {
   border-bottom-color: #007bff !important;
 }
@@ -174,20 +170,16 @@ input[name='q']::placeholder {
   overflow-y: auto;
 }
 
-/* -------------------------------- Media Queries */
-
-/* Slightly larger container on xl screens */
 @media (min-width: 1200px) {
 .container {
   max-width: 80%;
 }
 }
 
-/* Allauth form formatting */
 
 .allauth-form-inner-content p {
-  margin-top: 1.5rem; /* mt-4 */
-  color: #6c757d; /* text-secondary */
+  margin-top: 1.5rem;
+  color: #6c757d; 
 }
 
 .allauth-form-inner-content input {
@@ -205,7 +197,6 @@ input[name='q']::placeholder {
 
 .allauth-form-inner-content button,
 .allauth-form-inner-content input[type='submit'] {
-/* btn */
 display: inline-block;
   font-weight: 400;
   color: #fff;
@@ -221,8 +212,6 @@ display: inline-block;
   font-size: 1rem;
   line-height: 1.5;
   border-radius: 0;
-
-  /* standard bootstrap btn transitions */
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
@@ -234,7 +223,7 @@ color: #fff;
 }
 
 .allauth-form-inner-content a {
-color: #17a2b8; /* text-info */
+color: #17a2b8; 
 }
 
 .btn-file {
@@ -274,24 +263,23 @@ footer .quotes-container {
 
 footer h2, footer h3 {
   font-size: 1.5rem;
-  color: #333; /* Or any color you prefer for the text */
+  color: #333;
 }
 
 footer a {
-  color: #007bff; /* Bootstrap default link color, or choose your own */
+  color: #007bff; 
 }
 
 footer a:hover {
-  color: #0056b3; /* Darker shade for hover state */
+  color: #0056b3;
 }
 
 footer .block-divider {
-  border-color: #eee; /* Light gray border for the divider */
+  border-color: #eee;
 }
 
-/* Social Icons */
 footer .fab {
-  font-size: 1.5rem; /* Adjust size as needed */
+  font-size: 1.5rem; 
   margin-right: 0.5rem;
 }
 
@@ -307,14 +295,12 @@ footer .fab {
   margin: 0;
 }
 
-/* Adjustments for smaller screens */
 @media (max-width: 768px) {
   footer .quotes-container {
       padding: 1rem;
   }
 }
 
-/* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
   .fixed-top-desktop-only {
       position: fixed;
@@ -329,7 +315,6 @@ footer .fab {
   }
 }
 
-/* pad the top a bit when navbar is collapsed on mobile */
 @media (max-width: 991px) {
   .header-container {
       padding-top: 116px;

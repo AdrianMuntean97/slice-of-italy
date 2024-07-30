@@ -11,12 +11,12 @@ from django_countries.fields import CountryField
 from .models import UserProfile
 
 class UserProfileForm(forms.ModelForm):
-    # Manually define the default_country field to use choices from django-countries
+
     default_country = forms.ChoiceField(choices=[('', 'Select a country')] + list(CountryField().choices), required=False)
 
     class Meta:
         model = UserProfile
-        exclude = ('user',)  # Exclude user from the form fields, but now default_country is explicitly included
+        exclude = ('user',) 
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -27,7 +27,7 @@ class UserProfileForm(forms.ModelForm):
             'default_street_address1': 'Street Address 1',
             'default_street_address2': 'Street Address 2',
             'default_county': 'County, State or Locality',
-            'default_country': 'Country',  # Add placeholder for country
+            'default_country': 'Country',  
         }
 
         self.fields['default_phone_number'].widget.attrs['autofocus'] = True
@@ -37,7 +37,6 @@ class UserProfileForm(forms.ModelForm):
                 self.fields[field].widget.attrs['class'] = 'border-black rounded-0 profile-form-input'
                 self.fields[field].label = False
 
-        # Since 'default_country' is now a manually defined ChoiceField, we handle it like other fields
         if 'instance' in kwargs and kwargs['instance'].default_country:
             self.fields['default_country'].initial = kwargs['instance'].default_country
 

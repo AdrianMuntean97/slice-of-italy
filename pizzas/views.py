@@ -40,12 +40,12 @@ def pizzas(request):
 def pizzas_by_category(request, category):
     """ A view to show pizzas filtered by category """
     pizzas = Pizza.objects.filter(category__name=category)
-    all_categories = Category.objects.all()  # Make sure this is included
+    all_categories = Category.objects.all()
 
     context = {
         'pizzas': pizzas,
         'current_category': category,
-        'all_categories': all_categories,  # Pass all categories to the template
+        'all_categories': all_categories,
     }
     return render(request, 'pizzas/pizzas.html', context)
 

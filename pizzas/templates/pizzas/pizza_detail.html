@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+
+{% block meta %}
+    <meta name="description" content="View details and reviews for {{ pizza.name }}. Discover its delicious ingredients, price, and customer ratings. Add to your wishlist or bag.">
+{% endblock %}
+
 {% block content %}
   <h1>{{ pizza.name }}</h1>
   <p>{{ pizza.description }}</p>

@@ -1,14 +1,12 @@
 from django.shortcuts import render
 from pizzas.models import Category
 
-# Create your views here.
 
 def index(request):
     """ A view to return the index page """
-    all_categories = Category.objects.all()  # Get all category objects
-
+    all_categories = Category.objects.all()
     context = {
-        'all_categories': all_categories,  # Pass all categories to the template
+        'all_categories': all_categories,
     }
 
     return render(request, 'home/index.html', context)

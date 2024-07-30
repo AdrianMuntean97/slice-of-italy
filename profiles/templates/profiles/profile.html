@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block meta %}
+    <meta name="description" content="Manage your profile and view your order history at Slice of Italy. Update your delivery information and keep track of your past orders.">
+{% endblock %}
+
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'profiles/static/css/profile.css' %}">
 {% endblock %}
