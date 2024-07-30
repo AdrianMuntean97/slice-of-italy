@@ -306,7 +306,12 @@ Manual testing was conducted for each section of the site to ensure all features
 
 ## Responsiveness Testing
 
-Responsiveness was tested using Responsive Design Checker on various devices (e.g., desktop, tablet, mobile).
+Responsiveness was tested using Responsive Design Checker on various devices (e.g., desktop, tablet, mobile). I have tried using responsive website but none of them worked for me and i did some manual testing. 
+
+<a href="https://ibb.co/x3S7Z4f"><img src="https://i.ibb.co/x3S7Z4f/Iphone.png" alt="Iphone" border="0"></a>
+<a href="https://ibb.co/ckHX27C"><img src="https://i.ibb.co/ckHX27C/399x648.png" alt="399x648" border="0"></a>
+<a href="https://ibb.co/rx1GrQq"><img src="https://i.ibb.co/rx1GrQq/1080x800.png" alt="1080x800" border="0"></a>
+<a href="https://ibb.co/4WtNL0n"><img src="https://i.ibb.co/4WtNL0n/1469x933.png" alt="1469x933" border="0"></a>
 
 ## Code Validation
 
