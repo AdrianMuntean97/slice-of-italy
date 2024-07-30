@@ -1,3 +1,4 @@
+/* Stripe Element Styles */
 .StripeElement,
 .stripe-style-input {
   box-sizing: border-box;
@@ -22,45 +23,88 @@
 }
 
 .stripe-style-input::placeholder {
-    color: #aab7c4;
+  color: #aab7c4;
 }
 
 .fieldset-label {
-    position: relative;
-    right: .5rem;
+  position: relative;
+  right: .5rem;
 }
 
 #payment-form .form-control,
 #card-element {
-    color: #000;
-    border: 1px solid #000;
+  color: #000;
+  border: 1px solid #000;
 }
 
 select,
 select option {
-    color: #000000;
+  color: #000000;
 }
 
 select:invalid,
 select option[value=""] {
-    color: #aab7c4 !important;
+  color: #aab7c4 !important;
 }
 
 #loading-overlay {
-	display: none;
-	position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(23, 162, 184, .85);
-    z-index: 9999;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(23, 162, 184, .85);
+  z-index: 9999;
 }
 
 .loading-spinner {
-	display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  height: 100%;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {
+  .StripeElement,
+  .stripe-style-input {
+    height: 50px;
+    padding: 12px 15px;
+  }
+
+  #payment-form .form-control,
+  #card-element {
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .StripeElement,
+  .stripe-style-input {
+    height: 45px;
+    padding: 11px 14px;
+  }
+
+  #payment-form .form-control,
+  #card-element {
+    font-size: 0.9rem;
+    padding: 0.7rem 0.9rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .StripeElement,
+  .stripe-style-input {
+    height: 40px;
+    padding: 10px 12px;
+  }
+
+  #payment-form .form-control,
+  #card-element {
+    font-size: 0.875rem;
+    padding: 0.6rem 0.8rem;
+  }
 }

@@ -1,6 +1,11 @@
-{% extends "base.html" %}
-
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found</title>
+</head>
+<body>
   <div class="container">
     <div class="row">
       <div class="col">
@@ -14,6 +19,7 @@
   <script type="text/javascript">
     setTimeout(function() {
       window.location.href = "{% url 'home' %}";
-    }, 5000); // Redirect after 5 seconds
+    }, 5000);
   </script>
-{% endblock %}
+</body>
+</html>

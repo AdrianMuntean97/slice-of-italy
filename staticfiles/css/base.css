@@ -7,10 +7,13 @@ body {
   background-size: cover;
   height: calc(100vh - 164px);
   color: #555;
-  font-family: 'Lato';
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* from Bulma */
+/* General Styles */
 .icon {
   align-items: center;
   display: inline-flex;
@@ -27,37 +30,47 @@ body {
   width: fit-content;
 }
 
-.shop-now-button {
-  background: black;
-  color: white;
-  min-width: 260px;
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  color: #007bff;
+}
+
+/* Button Styles */
+.btn, .shop-now-button {
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 0.375rem 0.75rem;
+  text-align: center;
+  vertical-align: middle;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .btn-black {
-  background: black;
+  background-color: black;
   color: white;
 }
 
 .btn-outline-black {
-  background: white;
-  color: black !important; /* use important to override link colors for <a> elements */
+  background-color: white;
+  color: black !important;
   border: 1px solid black;
 }
 
-.btn-outline-black:hover,
-.btn-outline-black:active,
-.btn-outline-black:focus {
-  background: black;
+.btn-outline-black:hover, .btn-outline-black:focus, .btn-outline-black:active {
+  background-color: black;
   color: white !important;
 }
 
-.shop-now-button:hover,
-.shop-now-button:active,
-.shop-now-button:focus,
-.btn-black:hover,
-.btn-black:active,
-.btn-black:focus {
-  background: #222;
+.shop-now-button:hover, .shop-now-button:focus, .shop-now-button:active, .btn-black:hover, .btn-black:focus, .btn-black:active {
+  background-color: #222;
   color: white;
 }
 
@@ -70,24 +83,20 @@ body {
 }
 
 .bg-black {
-  background: #000 !important;
+  background-color: #000 !important;
 }
 
 .overlay {
-height: 100%;
-width: 100%;
-top: 0;
-left: 0;
-position: fixed;
-background: white;
-z-index: -1;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: -1;
 }
 
-a.category-badge > span.badge:hover {
-  background: #212529 !important;
-  color: #fff !important;
-}
-
+/* Scroll to Top Button */
 .btt-button {
   height: 42px;
   width: 42px;
@@ -96,18 +105,16 @@ a.category-badge > span.badge:hover {
   right: 10px;
 }
 
-.btt-link,
-.update-link,
-.remove-item {
+.btt-link, .update-link, .remove-item {
   cursor: pointer;
 }
 
+/* Form Placeholder */
 input[name='q']::placeholder {
   color: #aab7c4;
 }
 
-/* ------------------------------- bootstrap toasts */
-
+/* Toast Messages */
 .message-container {
   position: fixed;
   top: 72px;
@@ -123,7 +130,6 @@ input[name='q']::placeholder {
   height: 2px;
 }
 
-/* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
 .arrow-up {
   width: 0; 
   height: 0; 
@@ -135,7 +141,6 @@ input[name='q']::placeholder {
   right: 36px;
 }
 
-/* Convenience classes - colors copied from Bootstrap */
 .arrow-primary {
   border-bottom-color: #007bff !important;
 }
@@ -174,20 +179,10 @@ input[name='q']::placeholder {
   overflow-y: auto;
 }
 
-/* -------------------------------- Media Queries */
-
-/* Slightly larger container on xl screens */
-@media (min-width: 1200px) {
-.container {
-  max-width: 80%;
-}
-}
-
-/* Allauth form formatting */
-
+/* Allauth Form Styling */
 .allauth-form-inner-content p {
-  margin-top: 1.5rem; /* mt-4 */
-  color: #6c757d; /* text-secondary */
+  margin-top: 1.5rem;
+  color: #6c757d;
 }
 
 .allauth-form-inner-content input {
@@ -203,17 +198,12 @@ input[name='q']::placeholder {
   color: #aab7c4;
 }
 
-.allauth-form-inner-content button,
-.allauth-form-inner-content input[type='submit'] {
-/* btn */
-display: inline-block;
+.allauth-form-inner-content button, .allauth-form-inner-content input[type='submit'] {
+  display: inline-block;
   font-weight: 400;
   color: #fff;
   text-align: center;
   vertical-align: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   background-color: #000;
   border: 1px solid #000;
@@ -221,22 +211,20 @@ display: inline-block;
   font-size: 1rem;
   line-height: 1.5;
   border-radius: 0;
-
-  /* standard bootstrap btn transitions */
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
-.allauth-form-inner-content button:hover,
-.allauth-form-inner-content input[type='submit']:hover {	
-color: #fff;
+.allauth-form-inner-content button:hover, .allauth-form-inner-content input[type='submit']:hover {
+  color: #fff;
   background-color: #222;
   border-color: #222;
 }
 
 .allauth-form-inner-content a {
-color: #17a2b8; /* text-info */
+  color: #17a2b8;
 }
 
+/* File Input Button */
 .btn-file {
   position: relative;
   overflow: hidden;
@@ -263,6 +251,7 @@ color: #17a2b8; /* text-info */
   border-radius: 0;
 }
 
+/* Footer Styles */
 footer.container-wrapper {
   z-index: 1000;
   background-color: white !important;
@@ -274,24 +263,23 @@ footer .quotes-container {
 
 footer h2, footer h3 {
   font-size: 1.5rem;
-  color: #333; /* Or any color you prefer for the text */
+  color: #333;
 }
 
 footer a {
-  color: #007bff; /* Bootstrap default link color, or choose your own */
+  color: #007bff;
 }
 
 footer a:hover {
-  color: #0056b3; /* Darker shade for hover state */
+  color: #0056b3;
 }
 
 footer .block-divider {
-  border-color: #eee; /* Light gray border for the divider */
+  border-color: #eee;
 }
 
-/* Social Icons */
 footer .fab {
-  font-size: 1.5rem; /* Adjust size as needed */
+  font-size: 1.5rem;
   margin-right: 0.5rem;
 }
 
@@ -307,71 +295,213 @@ footer .fab {
   margin: 0;
 }
 
-/* Adjustments for smaller screens */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
   footer .quotes-container {
-      padding: 1rem;
-  }
-}
-
-/* fixed top navbar only on medium and up */
-@media (min-width: 992px) {
-  .fixed-top-desktop-only {
-      position: fixed;
-      top: 0;
-      right: 0;
-      left: 0;
-      z-index: 1030;
-  }
-
-  .header-container {
-      padding-top: 164px;
-  }
-}
-
-/* pad the top a bit when navbar is collapsed on mobile */
-@media (max-width: 991px) {
-  .header-container {
-      padding-top: 116px;
-  }
-
-  body {
-      height: calc(100vh - 116px);
+    padding: 1rem;
   }
 
   .display-4.logo-font.text-black {
-      font-size: 2rem;
+    font-size: 2rem;
   }
 
   .nav-link {
-      padding: 0.15rem;
+    padding: 0.15rem;
   }
 
   .nav-link i.fa-lg {
-      font-size: 1rem;
+    font-size: 1rem;
   }
 
   .navbar-toggler {
-      padding: .6rem .6rem;
-      font-size: 1rem;
+    padding: .6rem .6rem;
+    font-size: 1rem;
   }
 
   #delivery-banner h4 {
-      font-size: .9rem;
+    font-size: .9rem;
   }
 
   .btn.btn-outline-black.rounded-0,
   .btn.btn-black.rounded-0 {
-      padding: .375rem .375rem;
+    padding: .375rem .375rem;
   }
 
   .btn.btn-outline-black.rounded-0.btn-lg,
   .btn.btn-black.rounded-0.btn-lg {
-      padding: .375rem .375rem;
-      font-size: .75rem;
+    padding: .375rem .375rem;
+    font-size: .75rem;
   }
 
   .increment-qty, .decrement-qty {
-      padding: .25rem .5rem !important;
+    padding: .25rem .5rem !important;
+  }
+}
+
+/* Slightly larger container on xl screens */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 80%;
+  }
+}
+
+/* Checkout Styles */
+.StripeElement,
+.stripe-style-input {
+  box-sizing: border-box;
+  height: 40px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 0px;
+  background-color: white;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus,
+.stripe-style-input:focus,
+.stripe-style-input:active {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+.stripe-style-input::placeholder {
+  color: #aab7c4;
+}
+
+.fieldset-label {
+  position: relative;
+  right: .5rem;
+}
+
+#payment-form .form-control,
+#card-element {
+  color: #000;
+  border: 1px solid #000;
+}
+
+select,
+select option {
+  color: #000000;
+}
+
+select:invalid,
+select option[value=""] {
+  color: #aab7c4 !important;
+}
+
+#loading-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(23, 162, 184, .85);
+  z-index: 9999;
+}
+
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  height: 100%;
+}
+
+/* Profile Styles */
+.order-history {
+  max-height: 416px; /* height of profile form + submit button */
+  overflow-y: auto;
+}
+
+#profile-update-form .form-control {
+  color: #000;
+}
+
+#profile-update-form input::placeholder {
+  color: #aab7c4;
+}
+
+#id_default_country,
+#id_default_country option:not(:first-child) {
+  color: #000;
+}
+
+#id_default_country option:first-child {
+  color: #aab7c4;
+}
+
+/* Media Queries for Different Devices */
+
+/* Smartphones (portrait and landscape) */
+@media (max-width: 767px) {
+  body {
+    height: auto;
+    padding-bottom: 50px; /* to ensure space for footer */
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0 15px;
+  }
+
+  .header-container {
+    padding-top: 80px;
+  }
+
+  .display-4.logo-font.text-black {
+    font-size: 1.75rem;
+  }
+
+  .shop-now-button,
+  .btn-black,
+  .btn-outline-black {
+    width: 100%;
+    padding: 0.75rem 1rem;
+  }
+
+  .overlay {
+    background: rgba(255, 255, 255, 0.9);
+  }
+}
+
+/* Tablets (portrait and landscape) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .header-container {
+    padding-top: 100px;
+  }
+
+  .display-4.logo-font.text-black {
+    font-size: 2.25rem;
+  }
+
+  .shop-now-button,
+  .btn-black,
+  .btn-outline-black {
+    width: auto;
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* Desktops and larger screens */
+@media (min-width: 992px) {
+  .header-container {
+    padding-top: 164px;
+  }
+
+  .display-4.logo-font.text-black {
+    font-size: 3rem;
+  }
+
+  .shop-now-button,
+  .btn-black,
+  .btn-outline-black {
+    width: auto;
+    padding: 0.75rem 1.5rem;
   }
 }
