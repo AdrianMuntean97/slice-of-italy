@@ -15,7 +15,6 @@ urlpatterns = [
     path('wishlist/', include('wishlist.urls')),
     path('reviews/', include('reviews.urls')),
     path('contact/', include('contact.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
-  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 handler404 = 'slice_of_italy.views.handler404'

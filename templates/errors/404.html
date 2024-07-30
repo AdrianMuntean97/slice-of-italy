@@ -1,26 +1,19 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends "base.html" %}
+
 {% block content %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1>Page Not Found</h1>
+        <p>Sorry, the page you are looking for does not exist. You will be redirected to the homepage shortly.</p>
+        <p>If the redirection does not happen automatically, <a href="{% url 'home' %}">click here</a> to go to the homepage.</p>
+      </div>
     </div>
-    <div class="container h-100">
-        <div class="row h-100">
-            <div class="col-7 col-md-6 my-auto">
-                <h1 class="display-4 logo-font text-black">
-                    The page you are looking for isn't available
-                </h1>
-                <div class="my-5">
-                    <h4>
-                        <a href="{% url 'products' %}" 
-                            class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">
-                                Return to shop
-                        </a>
-                    </h4>
-                </div>
-            </div>
-        </div>
-    </div>
+  </div>
+
+  <script type="text/javascript">
+    setTimeout(function() {
+      window.location.href = "{% url 'home' %}";
+    }, 5000); // Redirect after 5 seconds
+  </script>
 {% endblock %}
