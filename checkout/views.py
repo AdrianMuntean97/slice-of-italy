@@ -5,15 +5,13 @@ from django.conf import settings
 from decimal import Decimal
 from .forms import OrderForm
 from .models import Order, OrderLineItem
-
 from pizzas.models import Pizza
 from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
 from bag.contexts import bag_contents
-
 import stripe
 import json
-
+from django.core.mail import send_mail
 
 @require_POST
 def cache_checkout_data(request):
@@ -27,10 +25,20 @@ def cache_checkout_data(request):
         })
         return HttpResponse(status=200)
     except Exception as e:
-        messages.error(request, 'Sorry, your payment cannot be \
-            processed right now. Please try again later.')
+        messages.error(request, 'Sorry, your payment cannot be processed right now. Please try again later.')
         return HttpResponse(content=e, status=400)
 
+def send_order_confirmation_email(order):
+    subject = f'Order Confirmation - {order.order_number}'
+    message = f'Thank you for your order! Your order number is {order.order_number}.'
+    recipient = order.email
+    send_mail(
+        subject,
+        message,
+        settings.DEFAULT_FROM_EMAIL,
+        [recipient],
+        fail_silently=False,
+    )
 
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
@@ -76,19 +84,16 @@ def checkout(request):
                             )
                             order_line_item.save()
                 except Pizza.DoesNotExist:
-                    messages.error(request, (
-                        "One of the pizzas in your bag wasn't found in our database. "
-                        "Please call us for assistance!")
-                    )
+                    messages.error(request, "One of the pizzas in your bag wasn't found in our database. Please call us for assistance!")
                     order.delete()
                     return redirect(reverse('view_bag'))
 
             # Save the info to the user's profile if all is well
             request.session['save_info'] = 'save-info' in request.POST
+            send_order_confirmation_email(order)
             return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
-            messages.error(request, 'There was an error with your form. \
-                Please double check your information.')
+            messages.error(request, 'There was an error with your form. Please double check your information.')
     else:
         bag = request.session.get('bag', {})
         if not bag:
@@ -124,8 +129,7 @@ def checkout(request):
             order_form = OrderForm()
 
     if not stripe_public_key:
-        messages.warning(request, 'Stripe public key is missing. \
-            Did you forget to set it in your environment?')
+        messages.warning(request, 'Stripe public key is missing. Did you forget to set it in your environment?')
 
     template = 'checkout/checkout.html'
     context = {
@@ -135,7 +139,6 @@ def checkout(request):
     }
 
     return render(request, template, context)
-
 
 def checkout_success(request, order_number):
     """

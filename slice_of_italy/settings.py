@@ -53,6 +53,10 @@ INSTALLED_APPS = [
     'stripe',
     'django_countries',
     'storages',
+    'wishlist',
+    'contact',
+    'reviews',
+    'slice_of_italy'
 ]
 
 MIDDLEWARE = [

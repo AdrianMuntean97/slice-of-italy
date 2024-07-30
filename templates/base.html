@@ -105,6 +105,14 @@
                             </div>
                         </a>
                     </li>
+                    <li class="list-inline-item">
+                        <a class="text-black nav-link" href="{% url 'wishlist' %}">
+                            <div class="text-center">
+                                <div><i class="fas fa-heart fa-lg"></i></div>
+                                <p class="my-0">Wishlist</p>
+                            </div>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -224,6 +232,18 @@
                     </div>
                 </div>
             </section>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Contact Us</h3>
+                    <form action="{% url 'contact' %}" method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </footer>
     <!-- /.footer -->
