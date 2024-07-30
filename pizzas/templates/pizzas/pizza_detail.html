@@ -6,6 +6,7 @@
   <p>Price: {{ pizza.price }}</p>
   <p>Rating: {{ pizza.rating }}</p>
   <img src="{{ pizza.image.url }}" alt="{{ pizza.name }}">
+
   {% if user.is_authenticated %}
     {% if pizza in user.wishlist.pizzas.all %}
       <a href="{% url 'remove_from_wishlist' pizza.id %}">Remove from Wishlist</a>
@@ -13,6 +14,13 @@
       <a href="{% url 'add_to_wishlist' pizza.id %}">Add to Wishlist</a>
     {% endif %}
   {% endif %}
+
+  <form action="{% url 'add_to_bag' pizza.id %}" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+    <input type="number" name="quantity" value="1" min="1" max="10">
+    <button type="submit" class="btn btn-primary">Add to Bag</button>
+  </form>
 
   <h2>Reviews</h2>
   {% for review in pizza.reviews.all %}
@@ -24,6 +32,6 @@
   {% endfor %}
 
   {% if user.is_authenticated %}
-    <a href="{% url 'add_review' pizza.id %}">Add Review</a>
+    <a href="{% url 'add_review' pizza.id %}" class="btn btn-secondary">Leave a Review</a>
   {% endif %}
 {% endblock %}
